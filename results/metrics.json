@@ -1,0 +1,53 @@
+{
+  "dataset": "Santander Customer Satisfaction training file",
+  "input_sha256": "3a3214dbcca233c4f066a2017e33fffc7789cb2c9fc5c09c3a76fe22f9c2954e",
+  "rows": 76020,
+  "features": 369,
+  "positive_fraction": 0.0395685345961589,
+  "same_predictor_rows_beyond_first": 4940,
+  "split_sizes": {
+    "train": 45612,
+    "validation": 15204,
+    "test": 15204
+  },
+  "selection_metric": "validation ROC-AUC",
+  "selected_model": "HistGradientBoosting leaves15",
+  "test_results": {
+    "L2 logistic baseline": {
+      "accuracy": 0.9602078400420941,
+      "balanced_accuracy": 0.5030825659434993,
+      "macro_f1": 0.496372575294967,
+      "weighted_f1": 0.941420461420646,
+      "roc_auc": 0.7794544482824681,
+      "average_precision": 0.14167324237492002
+    },
+    "PCA128 + L2": {
+      "accuracy": 0.9603393843725335,
+      "balanced_accuracy": 0.5039473726122258,
+      "macro_f1": 0.49803745934357857,
+      "weighted_f1": 0.9416141127878503,
+      "roc_auc": 0.781001703675963,
+      "average_precision": 0.14364415366854993
+    },
+    "HistGradientBoosting leaves15": {
+      "accuracy": 0.9605367008681925,
+      "balanced_accuracy": 0.5016611295681063,
+      "macro_f1": 0.49324549529331146,
+      "weighted_f1": 0.9413329526938824,
+      "roc_auc": 0.8357372994460778,
+      "average_precision": 0.19380960989521284
+    }
+  },
+  "majority_test_accuracy": 0.9604051565377533,
+  "legacy_cv_auc": 0.79524,
+  "legacy_comparability": "Old CV result is not directly comparable to this group-disjoint held-out test. Same-split baseline comparison is provided.",
+  "runtime_seconds": 29.51553201675415,
+  "environment": {
+    "python": "3.12.2",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "scipy": "1.18.1",
+    "seed": 42
+  }
+}
