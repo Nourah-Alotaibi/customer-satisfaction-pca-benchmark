@@ -1,0 +1,64 @@
+{
+  "analysis": "Follow-up operating-point analysis; existing test reused, not fresh validation",
+  "selection_rule": "Maximum dissatisfied-class F1 on four-fold group-disjoint development OOF scores",
+  "threshold": 0.13755277896499724,
+  "development_rows": 60816,
+  "folds": [
+    {
+      "fold": 1,
+      "fit_rows": 45612,
+      "score_rows": 15204
+    },
+    {
+      "fold": 2,
+      "fit_rows": 45612,
+      "score_rows": 15204
+    },
+    {
+      "fold": 3,
+      "fit_rows": 45612,
+      "score_rows": 15204
+    },
+    {
+      "fold": 4,
+      "fit_rows": 45612,
+      "score_rows": 15204
+    }
+  ],
+  "oof_minority_f1": 0.2835933568193256,
+  "test_comparison": [
+    {
+      "operating_point": "Default threshold",
+      "threshold": 0.5,
+      "accuracy": 0.9605367008681925,
+      "balanced_accuracy": 0.5016611295681063,
+      "macro_f1": 0.49324549529331146,
+      "weighted_f1": 0.9413329526938824,
+      "roc_auc": 0.8357372994460778,
+      "average_precision": 0.19380960989521284,
+      "minority_precision": 1.0,
+      "minority_recall": 0.0033222591362126247,
+      "minority_f1": 0.006622516556291391,
+      "flagged_rows": 2
+    },
+    {
+      "operating_point": "Development-OOF F1 threshold",
+      "threshold": 0.13755277896499724,
+      "accuracy": 0.911273349118653,
+      "balanced_accuracy": 0.6902248178809529,
+      "macro_f1": 0.6196578596451517,
+      "weighted_f1": 0.9263217860801414,
+      "roc_auc": 0.8357372994460778,
+      "average_precision": 0.19380960989521284,
+      "minority_precision": 0.21024049650892165,
+      "minority_recall": 0.45016611295681064,
+      "minority_f1": 0.28662083553675305,
+      "flagged_rows": 1289
+    }
+  ],
+  "limitations": [
+    "F1 is an illustrative objective, not a validated business-cost policy.",
+    "Threshold generalization needs validation on a fresh time period.",
+    "Changing threshold trades false positives for missed positives; ROC-AUC is unchanged."
+  ]
+}

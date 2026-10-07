@@ -75,3 +75,27 @@ Checks cover duplicate/conflicting-label split integrity.
 ## Attribution
 
 Portfolio project by Nourah Alotaibi. This package refactors the collected project into a new reproducible workflow. Dataset providers, upstream libraries and pretrained-model authors retain their respective rights. This repository does not grant a new license to third-party data or models.
+
+## Follow-up: turn ranking into an explicit decision
+
+The original model at threshold 0.5 flagged only 2 of the 602 dissatisfied test examples. A follow-up chose an illustrative threshold of **0.1376** by maximizing minority-class F1 on four-fold, group-disjoint out-of-fold development predictions. Test labels did not choose the threshold.
+
+| Operating point | Dissatisfied recall | Dissatisfied precision | Overall accuracy | Flagged records |
+|---|---:|---:|---:|---:|
+| Default 0.5 | 0.33% | 100.00% | 96.05% | 2 |
+| Development-selected F1 threshold | 45.02% | 21.02% | 91.13% | 1289 |
+
+The new threshold finds 271 of 602 dissatisfied examples but also flags 1,018 satisfied examples. Balanced accuracy increases to 0.690 and minority-class F1 to 0.287. ROC-AUC stays unchanged because only the decision rule changes. This makes the precision/recall tradeoff explicit; it is not a validated business-cost policy.
+
+**Evaluation boundary:** this is a follow-up on the previously reported test set, not fresh independent validation. The selection procedure uses development data only, but a future deployment should validate the rule on a new period.
+
+```shell
+python threshold_analysis.py --data data/train.csv --model models/model.joblib --out results
+python predict.py --input data/new_customers.csv --threshold 0.137553 --output predictions.csv
+```
+
+![Development-only threshold selection](results/threshold_selection.png)
+
+![Follow-up threshold confusion matrix](results/threshold_test_confusion_matrix.png)
+
+Full metrics: `results/threshold_analysis.json` and `results/threshold_test_comparison.csv`.
